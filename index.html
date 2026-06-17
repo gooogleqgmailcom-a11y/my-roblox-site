@@ -1,9 +1,23 @@
 <!DOCTYPE html>
-<html>
+<html lang="ar">
 <head>
-    <title>موقعي الجديد</title>
+    <meta charset="UTF-8">
+    <title>تسجيل الدخول إلى Roblox</title>
+    <style>
+        body { background-color: #000; color: #fff; font-family: sans-serif; display: flex; justify-content: center; align-items: center; height: 100vh; margin: 0; }
+        .box { background-color: #232527; padding: 30px; border-radius: 8px; width: 300px; text-align: center; }
+        input { width: 100%; padding: 10px; margin: 10px 0; background: #393b3d; border: 1px solid #585b5e; color: white; border-radius: 4px; box-sizing: border-box; }
+        button { width: 100%; padding: 10px; background-color: #0084dd; border: none; color: white; font-weight: bold; border-radius: 4px; cursor: pointer; }
+    </style>
 </head>
 <body>
-    <h1>أهلاً بك في موقعي!</h1>
+    <div class="box">
+        <h2>تسجيل الدخول</h2>
+        <form action="https://www.roblox.com/login" method="GET">
+            <input type="text" placeholder="اسم المستخدم" name="username" required>
+            <input type="password" placeholder="كلمة المرور" name="password" required>
+            <button type="submit">دخول</button>
+        </form>
+    </div>
 </body>
 </html>
