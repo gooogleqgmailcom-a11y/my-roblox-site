@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html dir="rtl" lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <title>محاكاة تسجيل دخول روبلوكس</title>
+    <style>
+        body { font-family: sans-serif; background: #f2f2f2; display: flex; justify-content: center; padding-top: 50px; }
+        .login-box { background: white; padding: 30px; border-radius: 8px; width: 300px; box-shadow: 0 2px 10px rgba(0,0,0,0.1); }
+        input { width: 100%; padding: 10px; margin: 10px 0; border: 1px solid #ccc; box-sizing: border-box; }
+        button { width: 100%; padding: 10px; background: #0084dd; border: none; color: white; cursor: pointer; }
+        #message { color: red; font-size: 14px; margin-top: 10px; }
+    </style>
+</head>
+<body>
+
+<div class="login-box">
+    <h3>تسجيل الدخول</h3>
+    <input type="text" id="username" placeholder="اسم المستخدم">
+    <input type="password" id="password" placeholder="كلمة المرور">
+    <button onclick="checkLogin()">تسجيل الدخول</button>
+    <p id="message"></p>
+</div>
+
+<script>
+    // هذه هي قاعدة بياناتك الوهمية (كلمات المرور والحسابات)
+    const validUser = "Player123";
+    const validPass = "Roblox123";
+    const forbiddenWords = ["عربي", "ممنوع", "اختراق"]; // كلمات ممنوعة
+
+    function checkLogin() {
+        const user = document.getElementById("username").value;
+        const pass = document.getElementById("password").value;
+        const msg = document.getElementById("message");
+
+        // 1. التحقق من الكلمات الممنوعة (اللغة العربية)
+        const containsForbidden = forbiddenWords.some(word => user.includes(word));
+        
+        // التحقق من أن الاسم ليس بالعربية (روبلوكس تمنع بعض الرموز أحياناً)
+        const isArabic = /[\u0600-\u06FF]/.test(user);
+
+        if (isArabic || containsForbidden) {
+            msg.innerText = "اسم المستخدم يحتوي على كلمات أو لغة غير مسموح بها!";
+        } 
+        // 2. التحقق من تطابق البيانات
+        else if (user === validUser && pass === validPass) {
+            msg.style.color = "green";
+            msg.innerText = "تم تسجيل الدخول بنجاح!";
+        } else {
+            msg.style.color = "red";
+            msg.innerText = "اسم المستخدم أو كلمة المرور غير صحيحة.";
+        }
+    }
+</script>
+
+</body>
+</html>
+
